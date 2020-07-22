@@ -1,25 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/general/general_structure.dart';
 
 void main() {
   runApp(MyApp());
 }
 
+
+
+
+
+
+
+
 class MyApp extends StatelessWidget {
+
+  GeneralStructure _generalStructure;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(),
-    );
+    return _generalStructure.myMaterialAppFonction('titre',MyHomePage());
   }
 }
+
+
+
+
+
+
 
 class MyHomePage extends StatefulWidget {
 
@@ -28,12 +35,19 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+
+
+
+
+
+
+
 class _MyHomePageState extends State<MyHomePage> {
 
 
   @override
   Widget build(BuildContext context) {
-
+    return Scaffold();
 
   }
 }
