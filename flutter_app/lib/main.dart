@@ -5,6 +5,7 @@ import 'package:flutterapp/general/general_structure.dart';
 
 import 'connecteur/ServiceUsers.dart';
 import 'connecteur/Users.dart';
+import 'frontPage/FrontInscription.dart';
 
 
 
@@ -41,27 +42,27 @@ class _MyHomePageState extends State<MyHomePage> {
   GeneralStructure _generalStructure;
   _MyHomePageState(this._generalStructure);
   FrontHome _frontHome = FrontHome();
-
+  FrontInscription _frontInscription = FrontInscription();
 
   GestionSwitch _gestionSwitch = new GestionSwitch();
 
-  UserService _service = UserService();
+  //UserService _service = UserService();
 
-  User _user = User('testuser','testpass','testname','testemail','testprenom',33,'teststreet','testville',39);
+  //User _user = User('DONG','testpass3','testname4','testemailQQ','testprenom',53,'teststreet','testville',69);
 
 
   @override
   Widget build(BuildContext context) {
 
-    _service.addUser(_user.toMap());
+   // _service.addUser(_user.toMap());
 
     switch(_gestionSwitch.what){
       case switcherPage.home:
-        return _generalStructure.myBodyBuild(context,_frontHome.FrontH(context));
+        return _generalStructure.myBodyBuild(context,_frontInscription.FrontI(context));
         break;
-      case switcherPage.inscription:
+      /*case switcherPage.inscription:
         return _generalStructure.myBodyBuild(context,Center(child: Text('test 2'),));
-        break;
+        break;*/
     }
   }
 

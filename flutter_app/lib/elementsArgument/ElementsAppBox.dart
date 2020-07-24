@@ -20,8 +20,8 @@ class ElementsAppBox{
   ///colors
 
   ///boolean
-  static bool _drawerShow =true;
-  static final bool _debugShow =false;
+  static bool _drawerShow =false;
+  static final bool _debugShow =true;
   static bool _appBarShow =true;
 
   bool get DRAWERSHOW => _drawerShow;
@@ -63,13 +63,16 @@ class ElementsAppBox{
         break;
     }
   }
+  static final TextAlign _textAlign = TextAlign.left;
+  TextAlign get textAlign => _textAlign;
   ///Alignment
   ///Text
 
   static final String _title = 'My Application';
   String get TITLE => _title;
 
-
-
+///Text
+///MediaQuery
+///MediaQuery
 
 }
