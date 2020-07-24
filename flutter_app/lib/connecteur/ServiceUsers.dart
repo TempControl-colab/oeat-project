@@ -12,7 +12,7 @@ class UserService {
 
 
   // Collections
-  final CollectionReference dbUsers = dbInstance.collection('USERS');
+  final CollectionReference dbUsers = dbInstance.collection('test');
 
   Future<List<User>> getAllUsers() async {
     QuerySnapshot querySnapshot = await dbUsers.getDocuments();

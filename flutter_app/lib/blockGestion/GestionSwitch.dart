@@ -8,7 +8,7 @@ abstract class AbstractBloc{
 enum switcherPage{
   home,
   inscription,
-  home_connect
+  home_connect,
 }
 
 class GestionSwitch extends AbstractBloc{
@@ -18,6 +18,7 @@ class GestionSwitch extends AbstractBloc{
   OptionBloc(){
     sink.add(enu);
   }
+
 
   final _controller = StreamController<switcherPage>();
 
