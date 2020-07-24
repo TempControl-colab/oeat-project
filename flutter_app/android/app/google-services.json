@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "224162648419",
+    "firebase_url": "https://parisoeat.firebaseio.com",
+    "project_id": "parisoeat",
+    "storage_bucket": "parisoeat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224162648419:android:fc1775dd2baf3708b44356",
+        "android_client_info": {
+          "package_name": "com.example.flutterapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "224162648419-1qr61icmu5fovqasmgm2jojo9b5ks7rg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsil-yauB-kMJ5Qo_vyNW-fO2YWyYWb7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "224162648419-1qr61icmu5fovqasmgm2jojo9b5ks7rg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
