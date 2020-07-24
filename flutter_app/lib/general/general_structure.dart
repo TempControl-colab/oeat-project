@@ -10,6 +10,10 @@ class GeneralStructure{
   StyleFullOfApp _STYLEFULL = new StyleFullOfApp();
 
 
+
+
+
+
   MaterialApp myMaterialAppFonction(StatefulWidget home){
 
     return MaterialApp(
@@ -25,7 +29,9 @@ class GeneralStructure{
 
 
 
-  Widget myBodyBuild(BuildContext context){
+
+
+  Widget myBodyBuild(BuildContext context,Widget body){
 
     return Scaffold(
       appBar: _ELEMENTSARG.APPBARSHOW == true ? _STYLEFULL.myAppBar(context):null,
@@ -37,14 +43,14 @@ class GeneralStructure{
                 child: Container(
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
+                          begin: _ELEMENTSARG.WhatAlignementStart('up'),
+                          end: _ELEMENTSARG.WhatAlignementEnd('dawn'),
                           colors: [_ELEMENTSARG.clGrey800,_ELEMENTSARG.clBlack]
                       )
                   ),
                 )
             ),
-            //bodyCreator
+            body
           ],
         ),
       ),

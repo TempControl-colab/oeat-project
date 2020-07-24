@@ -65,6 +65,7 @@ class ElementsAppBox{
   }
   ///Alignment
   ///Text
+
   static final String _title = 'My Application';
   String get TITLE => _title;
 
