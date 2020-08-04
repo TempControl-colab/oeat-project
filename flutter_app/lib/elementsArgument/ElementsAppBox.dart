@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/blockGestion/DrawerSwitchCase.dart';
 
 
 class ElementsAppBox{
@@ -52,7 +53,7 @@ class ElementsAppBox{
 
   Alignment WhatAlignementEnd(String what){
     switch(what){
-      case 'dawn':
+      case 'down':
         return Alignment.bottomCenter;
         break;
       case 'left':
@@ -68,8 +69,10 @@ class ElementsAppBox{
 
   static final String _title = 'My Application';
   String get TITLE => _title;
-
-
+  ///Text
+///Drawer
+  DrawerSwitchCase _DRAWERSWITCHCASE = DrawerSwitchCase();
+  get GETDRAWERSWITCHCASE => _DRAWERSWITCHCASE;
 
 
 }

@@ -35,7 +35,7 @@ class GeneralStructure{
 
     return Scaffold(
       appBar: _ELEMENTSARG.APPBARSHOW == true ? _STYLEFULL.myAppBar(context):null,
-      drawer: _ELEMENTSARG.DRAWERSHOW == true ? _STYLEFULL.myDrawer(context):null,
+      drawer: _ELEMENTSARG.DRAWERSHOW == true ? _STYLEFULL.myDrawer(context, _ELEMENTSARG.GETDRAWERSWITCHCASE):null,
       body: Center(
         child: Stack(
           children: [
@@ -44,7 +44,7 @@ class GeneralStructure{
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
                           begin: _ELEMENTSARG.WhatAlignementStart('up'),
-                          end: _ELEMENTSARG.WhatAlignementEnd('dawn'),
+                          end: _ELEMENTSARG.WhatAlignementEnd('down'),
                           colors: [_ELEMENTSARG.clGrey800,_ELEMENTSARG.clBlack]
                       )
                   ),

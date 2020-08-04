@@ -3,8 +3,10 @@ import 'package:flutterapp/blockGestion/GestionSwitch.dart';
 import 'package:flutterapp/frontPage/FrontHome.dart';
 import 'package:flutterapp/general/general_structure.dart';
 
+import 'blockGestion/DrawerSwitchCase.dart';
 import 'connecteur/ServiceUsers.dart';
 import 'connecteur/Users.dart';
+import 'frontPage/FrontConnect.dart';
 
 
 
@@ -41,6 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
   GeneralStructure _generalStructure;
   _MyHomePageState(this._generalStructure);
   FrontHome _frontHome = FrontHome();
+  FrontBuy _frontConnect = FrontBuy();
+  DrawerSwitchCase _drawerSwitchCase = DrawerSwitchCase();
 
 
   GestionSwitch _gestionSwitch = new GestionSwitch();
@@ -61,6 +65,9 @@ class _MyHomePageState extends State<MyHomePage> {
         break;
       case switcherPage.inscription:
         return _generalStructure.myBodyBuild(context,Center(child: Text('test 2'),));
+        break;
+      case switcherPage.buy:
+        return _generalStructure.myBodyBuild(context,_frontConnect.FrontC(context, this));
         break;
     }
   }

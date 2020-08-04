@@ -9,11 +9,12 @@ enum switcherPage{
   home,
   inscription,
   home_connect,
+  buy,
 }
 
 class GestionSwitch extends AbstractBloc{
 
-  switcherPage enu=switcherPage.home;
+  switcherPage enu=switcherPage.buy;
 
   OptionBloc(){
     sink.add(enu);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/blockGestion/DrawerSwitchCase.dart';
 import 'package:flutterapp/elementsArgument/ElementsAppBox.dart';
 
 class StyleFullOfApp{
@@ -40,31 +41,33 @@ class StyleFullOfApp{
   }
 
 
-  Drawer myDrawer(BuildContext context){
+  Drawer myDrawer(BuildContext context, DrawerSwitchCase drawerSwitchCase){
 
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            child: Text('Drawer Header'),
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
+    switch (drawerSwitchCase.enuDrawer) {
+      case switcherDrawer.home :
+        return Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Text('Drawer Header'),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+              ),
+              ListTile(
+                title: Text('Item 1'),
+                onTap: () {},
+              ),
+              ListTile(
+                title: Text('Item 2'),
+                onTap: () {},
+              ),
+            ],
           ),
-          ListTile(
-            title: Text('Item 1'),
-            onTap: () {
-            },
-          ),
-          ListTile(
-            title: Text('Item 2'),
-            onTap: () {
-            },
-          ),
-        ],
-      ),
-    );
+        );
+        break;
+    }
 
   }
 }
