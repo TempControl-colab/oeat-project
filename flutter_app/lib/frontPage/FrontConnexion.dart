@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/elementsArgument/ElementsAppBox.dart';
 
-class FrontHome{
+class FrontConnexion{
 
   ElementsAppBox _ELEMENTSAPPBOX = ElementsAppBox();
 
-  Widget FrontH(BuildContext context){
+  Widget FrontC(BuildContext context, State state){
     return Center(
       child: Stack(
         children: [
@@ -40,16 +40,6 @@ class FrontHome{
                     decoration: InputDecoration(
                       hintText: 'Mot de passe',
                     ),
-                  ),
-                ),
-                RaisedButton(
-                  onPressed: () {},
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Color.fromRGBO(100, 200, 125, 1)
-                    ),
-                    padding: const EdgeInsets.all(10),
-                    child: const Text('Connexion', style: TextStyle(fontSize: 15)),
                   ),
                 ),
               ],

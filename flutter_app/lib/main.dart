@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/blockGestion/GestionSwitch.dart';
+import 'package:flutterapp/frontPage/FrontConnexion.dart';
 import 'package:flutterapp/frontPage/FrontHome.dart';
 import 'package:flutterapp/general/general_structure.dart';
 
@@ -41,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   GeneralStructure _generalStructure;
   _MyHomePageState(this._generalStructure);
   FrontHome _frontHome = FrontHome();
+  FrontConnexion _frontConnexion = FrontConnexion();
 
 
   GestionSwitch _gestionSwitch = new GestionSwitch();
@@ -60,8 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
         return _generalStructure.myBodyBuild(context,_frontHome.FrontH(context));
         break;
       case switcherPage.inscription:
-        return _generalStructure.myBodyBuild(context,Center(child: Text('test 2'),));
+        return _generalStructure.myBodyBuild(context,Center(child: Text('Inscription'),));
         break;
+      case switcherPage.connexion:
+        return _generalStructure.myBodyBuild(context,_frontConnexion.FrontC(context, this));
     }
   }
 

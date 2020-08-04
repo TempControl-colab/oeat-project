@@ -8,7 +8,7 @@ abstract class AbstractBloc{
 enum switcherPage{
   home,
   inscription,
-  home_connect,
+  connexion,
 }
 
 class GestionSwitch extends AbstractBloc{

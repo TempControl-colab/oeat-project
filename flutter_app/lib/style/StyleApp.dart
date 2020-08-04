@@ -5,6 +5,7 @@ class StyleFullOfApp{
 
   ElementsAppBox _ELEMENTSARG = new ElementsAppBox();
 
+
   ThemeData themeDataValue(){
     return ThemeData(
       primaryColor: _ELEMENTSARG.clgr,
@@ -53,13 +54,19 @@ class StyleFullOfApp{
             ),
           ),
           ListTile(
-            title: Text('Item 1'),
+            title: Text('Home'),
             onTap: () {
             },
           ),
           ListTile(
-            title: Text('Item 2'),
+            title: Text('Connexion'),
             onTap: () {
+            },
+          ),
+          ListTile(
+            title: Text('Inscription'),
+            onTap: () {
+
             },
           ),
         ],
