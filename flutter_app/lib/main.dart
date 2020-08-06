@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   GeneralStructure _generalStructure;
   _MyHomePageState(this._generalStructure);
   FrontHome _frontHome = FrontHome();
-  FrontBuy _frontConnect = FrontBuy();
+  FrontConnect _frontConnect = FrontConnect();
   DrawerSwitchCase _drawerSwitchCase = DrawerSwitchCase();
 
 
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case switcherPage.inscription:
         return _generalStructure.myBodyBuild(context,Center(child: Text('test 2'),));
         break;
-      case switcherPage.buy:
+      case switcherPage.connexion:
         return _generalStructure.myBodyBuild(context,_frontConnect.FrontC(context, this));
         break;
     }

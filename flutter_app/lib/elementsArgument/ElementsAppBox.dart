@@ -69,6 +69,20 @@ class ElementsAppBox{
 
   static final String _title = 'My Application';
   String get TITLE => _title;
+  static final String _mailAdress = 'Adresse Mail';
+  String get MAILADRESS => _mailAdress;
+  static final String _passWord = 'Mot de Passe';
+  String get PASSWORD => _passWord;
+  static final String _connexion = 'CONNEXION';
+  String get CONNEXION => _connexion;
+  static final String _register = 'Inscription';
+  String get REGISTER => _register;
+  static final String _forgotPassWord = 'Mot de Passe Oublié';
+  String get FORGOTPASSWORD => _forgotPassWord;
+  static final String _backButton = 'Retour';
+  String get BACKBUTTON => _backButton;
+  static final String _okButton = 'OK';
+  String get OKBUTTON => _okButton;
   ///Text
 ///Drawer
   DrawerSwitchCase _DRAWERSWITCHCASE = DrawerSwitchCase();
