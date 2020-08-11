@@ -5,6 +5,7 @@ import 'package:flutterapp/blockGestion/DrawerSwitchCase.dart';
 class ElementsAppBox{
 
   ///colors
+  static final Color _textFieldColor = Colors.white;
   static final MaterialColor _clb = Colors.blue;
   static final Color _clr = Colors.redAccent;
   static final Color _clgr = Color.fromRGBO(16, 17, 16,1);
@@ -88,5 +89,31 @@ class ElementsAppBox{
   DrawerSwitchCase _DRAWERSWITCHCASE = DrawerSwitchCase();
   get GETDRAWERSWITCHCASE => _DRAWERSWITCHCASE;
 
+
+  Widget whiteTextField(String text) {
+    return (
+      TextField(
+        style: TextStyle(
+          color: _textFieldColor,
+        ),
+        decoration: InputDecoration(
+          hintText: text,
+          hintStyle: TextStyle(
+            color: _textFieldColor,
+          ),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: _textFieldColor,
+            ),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: _textFieldColor,
+            ),
+          ),
+        ),
+      )
+    );
+  }
 
 }

@@ -4,7 +4,7 @@ import 'package:flutterapp/frontPage/FrontHome.dart';
 import 'package:flutterapp/general/general_structure.dart';
 
 import 'blockGestion/DrawerSwitchCase.dart';
-import 'connecteur/ServiceUsers.dart';
+import 'connecteur/UserService.dart';
 import 'connecteur/Users.dart';
 import 'frontPage/FrontConnect.dart';
 

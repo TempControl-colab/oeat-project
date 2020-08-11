@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutterapp/blockGestion/GestionSwitch.dart';
+import 'package:flutterapp/connecteur/UserService.dart';
 import 'package:flutterapp/elementsArgument/ElementsAppBox.dart';
 import 'package:flutterapp/style/StyleApp.dart';
 
@@ -9,7 +10,6 @@ class FrontConnect {
   ElementsAppBox _ELEMENTS = ElementsAppBox();
 
   Widget FrontC (BuildContext context, State state) {
-    //return bottomScreen(context, state);
     return centerScreen(context, state);
   }
 
@@ -32,37 +32,73 @@ class FrontConnect {
           ),
           Align(
             alignment: Alignment.topCenter,
-            child: Text(
-              _ELEMENTS.CONNEXION.toUpperCase(),
-              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
-              textAlign: TextAlign.center,
-              textScaleFactor: 2.0,
-            ),
+            child: Container(
+              width: MediaQuery.of(context).size.width/1,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.lightBlue.withOpacity(0.6),
+                    spreadRadius: 5,
+                    blurRadius: 5,
+                    offset: Offset(0, 0), // changes position of shadow
+                  ),
+                ],
+                border: Border(
+                  bottom: BorderSide(color: Colors.white, width: 2.5)
+                ),
+              ),
+              child: Text(
+                _ELEMENTS.CONNEXION.toUpperCase(),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+                textAlign: TextAlign.center,
+                textScaleFactor: 2.0,
+              ),
+            )
+
           ),
           Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: MediaQuery.of(context).size.width/2,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: _ELEMENTS.MAILADRESS,
-                      ),
-                    ),
+                    width: MediaQuery.of(context).size.width/1.5,
+                    child: _ELEMENTS.whiteTextField(_ELEMENTS.MAILADRESS),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width/2,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: _ELEMENTS.PASSWORD,
-                      ),
-                    ),
+                    width: MediaQuery.of(context).size.width/1.5,
+                    child: _ELEMENTS.whiteTextField(_ELEMENTS.PASSWORD),
                   ),
                   Container(
+                      margin: EdgeInsets.only(left: 0, top: 200, right: 0, bottom: 0),
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.lightBlue.withOpacity(0.6),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                            offset: Offset(0, 0), // changes position of shadow
+                          ),
+                        ],
+                      ),
                       child : RaisedButton(
-                        color: Colors.transparent,
+                        textColor: Colors.blue,
+                        color: Colors.black.withOpacity(0.4),
                           onPressed: () {},
+                          shape: Border(
+                            top: BorderSide(
+                                color: Colors.white,
+                                width: 2.5,
+                                style: BorderStyle.solid
+                            ),
+                            bottom: BorderSide(
+                              color: Colors.white,
+                              width: 2.5,
+                              style: BorderStyle.solid
+                            ),
+                          ),
                           child: Container(
                             width: MediaQuery.of(context).size.width/1,
                             child: Text(_ELEMENTS.OKBUTTON, style: TextStyle(fontSize: 20, color: Colors.white), textAlign: TextAlign.center,),
@@ -116,6 +152,12 @@ class FrontConnect {
         ],
       ),
     );
+  }
+
+  bool test() {
+    UserService userService = new UserService();
+    userService.getAllUsers();
+    return true;
   }
 
 }

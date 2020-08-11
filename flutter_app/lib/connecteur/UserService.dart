@@ -40,4 +40,12 @@ class UserService {
     await dbUsers.document(querySnapshot.documents.first.documentID).delete();
   }
 
+  bool checkUserConnect(String mailAdress, String passWord) {
+    var user = dbUsers.where("email" == mailAdress).where("passWord" == passWord);
+    if (user != null) {
+      return true;
+    }
+    return false;
+  }
+
 }
