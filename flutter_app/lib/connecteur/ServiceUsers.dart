@@ -31,6 +31,18 @@ class UserService {
     return User.fromFirestore(documentSnapshot);
   }
 
+  Future<User> getTestUser(String mail,String pass) async {
+    QuerySnapshot querySnapshot =
+    await dbUsers.where('email', isEqualTo: mail).where('passWord', isEqualTo: pass).getDocuments();
+    if (querySnapshot.documents.length > 0) {
+      print('NON NULL');
+      DocumentSnapshot documentSnapshot = querySnapshot.documents.first;
+      return User.fromFirestore(documentSnapshot);
+    }
+    print('NULL');
+    return null;
+  }
+
   Future<void> addUser(Map<String, dynamic> map) =>
       dbUsers.document().setData(map);
 

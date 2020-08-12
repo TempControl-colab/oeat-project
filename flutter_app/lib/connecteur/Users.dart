@@ -25,8 +25,8 @@ class User {
       int numberCityLocation){
 
     this.id=id;
-    this.passWord=passWord;
     this.name=name;
+    this.passWord=passWord;
     this.email=email;
     this.firstName=firstName;
     this.numberLocation=numberLocation;
@@ -41,8 +41,8 @@ class User {
   User.fromFirestore(DocumentSnapshot documentSnapshot) {
     Map<String, dynamic> m = documentSnapshot.data;
     id = m['id'];
-    passWord = m['passWord'];
     name = m['name'];
+    passWord = m['passWord'];
     email = m['email'];
     firstName = m['firstName'];
     numberLocation = m['numberLocation'];

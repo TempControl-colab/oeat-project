@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutterapp/blockGestion/GestionSwitch.dart';
-import 'package:flutterapp/connecteur/UserService.dart';
+import 'package:flutterapp/connecteur/ServiceUsers.dart';
 import 'package:flutterapp/elementsArgument/ElementsAppBox.dart';
 import 'package:flutterapp/style/StyleApp.dart';
 
 class FrontConnect {
   ElementsAppBox _ELEMENTS = ElementsAppBox();
+
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passWordController = new TextEditingController();
 
   Widget FrontC (BuildContext context, State state) {
     return centerScreen(context, state);
@@ -65,11 +68,11 @@ class FrontConnect {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width/1.5,
-                    child: _ELEMENTS.whiteTextField(_ELEMENTS.MAILADRESS),
+                    child: _ELEMENTS.classicTextField(_ELEMENTS.MAIL, Colors.white, TextInputType.emailAddress, null, emailController),
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width/1.5,
-                    child: _ELEMENTS.whiteTextField(_ELEMENTS.PASSWORD),
+                    child: _ELEMENTS.classicTextField(_ELEMENTS.PASSWORD, Colors.white, TextInputType.visiblePassword, null, passWordController),
                   ),
                   Container(
                       margin: EdgeInsets.only(left: 0, top: 200, right: 0, bottom: 0),
@@ -154,10 +157,10 @@ class FrontConnect {
     );
   }
 
-  bool test() {
+  /*bool test() {
     UserService userService = new UserService();
     userService.getAllUsers();
     return true;
-  }
+  }*/
 
 }

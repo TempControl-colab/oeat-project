@@ -115,6 +115,8 @@ class ElementsAppBox{
   String get BACKBUTTON => _backButton;
   static final String _okButton = 'OK';
   String get OKBUTTON => _okButton;
+  static final String _permissions = "Accepter les conditions générales d'utilisations";
+  String get PERMISSIONS => _permissions;
 
   String validateName(String value) {
     if (value.length == 0)
@@ -142,12 +144,13 @@ class ElementsAppBox{
 
   ///Widget
 
-  Widget classicTextField(String text, Color color, TextInputType type, Icon icon) {
+  Widget classicTextField(String text, Color color, TextInputType type, Icon icon, TextEditingController textEditingController) {
     return (
         TextFormField(
           style: TextStyle(
             color: color,
           ),
+          controller: textEditingController,
           decoration: InputDecoration(
             hintText: text,
             hintStyle: TextStyle(

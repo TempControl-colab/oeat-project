@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/elementsArgument/ElementsAppBox.dart';
+import 'package:google_maps_webservice/places.dart';
+import 'package:flutter_google_places/flutter_google_places.dart';
 
 class FrontInscription extends StatefulWidget {
   FrontInscription({Key key}) : super(key: key);
@@ -15,7 +17,18 @@ class _FrontInscription extends State<FrontInscription>{
   String _nom;
   bool _checkValue = false;
   bool _checkValue2 = false;
+  bool _checkValue3 = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  TextEditingController nameController = new TextEditingController();
+  TextEditingController mailController = new TextEditingController();
+  TextEditingController passwordController1 = new TextEditingController();
+  TextEditingController passwordController2 = new TextEditingController();
+  TextEditingController adressController = new TextEditingController();
+  TextEditingController floorController = new TextEditingController();
+  TextEditingController codeController = new TextEditingController();
+  TextEditingController zipController = new TextEditingController();
+  TextEditingController cityController = new TextEditingController();
+  TextEditingController doorController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,65 +43,36 @@ class _FrontInscription extends State<FrontInscription>{
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: TextField(
-                        style: TextStyle(color: Colors.white),
-                        onChanged: (String s) {
-                          _nom = s;
-                        },
-                        onSubmitted: (String s) {
-                          _nom = s;
-                        },
-                        decoration: InputDecoration(
-                          hintText: 'Nom',
-                          hintStyle: TextStyle(
-                            color: Colors.white,
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.white
-                            ),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.white
-                            ),
-                          ),
-                          prefixIcon: Icon(Icons.person_outline,
-                            color: Colors.white),
-                        ),
-                        keyboardType: TextInputType.name,
-
-                      ),
+                      child: _ELEMENTS.classicTextField(_ELEMENTS.NAME, Colors.white, TextInputType.text, Icon(Icons.person_outline, color: Colors.white,), nameController)
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.MAIL, Colors.white, TextInputType.emailAddress, Icon(Icons.mail_outline, color: Colors.white)),
+                      child: _ELEMENTS.classicTextField(_ELEMENTS.MAIL, Colors.white, TextInputType.emailAddress, Icon(Icons.mail_outline, color: Colors.white), mailController),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.PASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white)),
+                      child: _ELEMENTS.classicTextField(_ELEMENTS.PASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white), passwordController1),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.CPASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white)),
+                      child: _ELEMENTS.classicTextField(_ELEMENTS.CPASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white), passwordController2),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.ADDRESS, Colors.white, TextInputType.text, Icon(Icons.location_on_outlined, color: Colors.white)),
+                      child: _ELEMENTS.classicTextField(_ELEMENTS.ADDRESS, Colors.white, TextInputType.text, Icon(Icons.location_on_outlined, color: Colors.white), adressController),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width/5,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.FLOOR, Colors.white, TextInputType.number, null),
+                          child: _ELEMENTS.classicTextField(_ELEMENTS.FLOOR, Colors.white, TextInputType.number, null, floorController),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width/4,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.CODE, Colors.white, TextInputType.text, null),
+                          child: _ELEMENTS.classicTextField(_ELEMENTS.CODE, Colors.white, TextInputType.text, null, codeController),
                         ),
                       ],
                     ),
@@ -97,17 +81,17 @@ class _FrontInscription extends State<FrontInscription>{
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width/2.9,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.ZIP, Colors.white, TextInputType.number, null),
+                          child: _ELEMENTS.classicTextField(_ELEMENTS.ZIP, Colors.white, TextInputType.number, null, zipController),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width/2.5,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.CITY, Colors.white, TextInputType.name, null),
+                          child: _ELEMENTS.classicTextField(_ELEMENTS.CITY, Colors.white, TextInputType.name, null, cityController),
                         ),
                       ],
                     ),
                     Container(
                         width: MediaQuery.of(context).size.width/1.2,
-                        child: _ELEMENTS.classicTextField(_ELEMENTS.DOOR, Colors.white, TextInputType.text, null)
+                        child: _ELEMENTS.classicTextField(_ELEMENTS.DOOR, Colors.white, TextInputType.text, null, doorController),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -156,24 +140,36 @@ class _FrontInscription extends State<FrontInscription>{
                         ),
                       ],
                     ),
+                    Container(
+                      child: Theme(
+                        data: ThemeData(unselectedWidgetColor: Colors.white),
+                        child: CheckboxListTile(
+                          title: Text(_ELEMENTS.PERMISSIONS,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          value: _checkValue3,
+                          onChanged: (bool value){
+                            setState(() {
+                              _checkValue3 = value;
+                            });
+                          },
+                          activeColor: Colors.lightBlueAccent,
+                          checkColor: Colors.white,
+                        ),
+                      ),
+                    ),
+
+
+
+
+
+
+
                     SizedBox(
                       height: 10.0,
                     ),
-                    /*Container(
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.red,
-                              blurRadius: 7.0,
-                              spreadRadius: 3.0,
-                            ),
-                          ]
-                      ),
-                      child: RaisedButton(
-                        onPressed: _validateInputs,
-                          child: Text(_ELEMENTS.VALIDATE),
-                      ),
-                    ),*/
                     Container(
                         margin: EdgeInsets.only(left: 0, top: 10, right: 0, bottom: 0),
                         decoration: BoxDecoration(
@@ -189,7 +185,9 @@ class _FrontInscription extends State<FrontInscription>{
                         child : RaisedButton(
                             textColor: Colors.blue,
                             color: Colors.black.withOpacity(0.4),
-                            onPressed: () {},
+                            onPressed: () {
+
+                            },
                             shape: Border(
                               top: BorderSide(
                                   color: Colors.white,
@@ -220,7 +218,31 @@ class _FrontInscription extends State<FrontInscription>{
 
 
 
-  void _validateInputs(){
-
+  Future<void> _validateInputs(){
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('AlertDialog Title'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('This is a demo alert dialog.'),
+                Text('Would you like to approve of this message?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Approve'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
