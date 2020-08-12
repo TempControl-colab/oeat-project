@@ -40,11 +40,27 @@ class UserService {
     await dbUsers.document(querySnapshot.documents.first.documentID).delete();
   }
 
+  Future<User> getTestUser(String mail,String pass) async {
+    QuerySnapshot querySnapshot =
+    await dbUsers.where('email', isEqualTo: mail).where('passWord', isEqualTo: pass).getDocuments();
+    if (querySnapshot.documents.length > 0) {
+      print('NON NULL');
+      DocumentSnapshot documentSnapshot = querySnapshot.documents.first;
+      return User.fromFirestore(documentSnapshot);
+    }
+    print('NULL');
+    return null;
+  }
+
   bool checkUserConnect(String mailAdress, String passWord) {
-    var user = dbUsers.where("email" == mailAdress).where("passWord" == passWord);
+    print('Recherche d''erreur 1');
+    var user = dbUsers.where("email" == mailAdress).where("passWord" == passWord); //erreur sur les where
+    print('Recherche d''erreur 2');
     if (user != null) {
+      print('Recherche d''erreur 3');
       return true;
     }
+    print('Recherche d''erreur 4');
     return false;
   }
 

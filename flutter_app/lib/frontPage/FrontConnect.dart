@@ -11,6 +11,7 @@ class FrontConnect {
 
   TextEditingController emailController = new TextEditingController();
   TextEditingController passWordController = new TextEditingController();
+  UserService userService = new UserService();
 
 
   Widget FrontC (BuildContext context, State state) {
@@ -91,8 +92,10 @@ class FrontConnect {
                         textColor: Colors.blue,
                         color: Colors.black.withOpacity(0.4),
                           onPressed: () {
-                            print(emailController.text);
-                            print(passWordController.text);
+                            String mail = emailController.text;
+                            String pass = passWordController.text;
+                            print(mail + " : " + pass);
+                            print(userService.getTestUser(mail, pass));
                       },
                           shape: Border(
                             top: BorderSide(
