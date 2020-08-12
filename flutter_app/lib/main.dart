@@ -7,6 +7,7 @@ import 'blockGestion/DrawerSwitchCase.dart';
 import 'connecteur/UserService.dart';
 import 'connecteur/Users.dart';
 import 'frontPage/FrontConnect.dart';
+import 'frontPage/FrontInscription.dart';
 
 
 
@@ -44,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   _MyHomePageState(this._generalStructure);
   FrontHome _frontHome = FrontHome();
   FrontConnect _frontConnect = FrontConnect();
+  FrontInscription _frontInscription = FrontInscription();
   DrawerSwitchCase _drawerSwitchCase = DrawerSwitchCase();
 
 
@@ -64,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
         return _generalStructure.myBodyBuild(context,_frontHome.FrontH(context));
         break;
       case switcherPage.inscription:
-        return _generalStructure.myBodyBuild(context,Center(child: Text('test 2'),));
+        return _generalStructure.myBodyBuild(context,_frontInscription);
         break;
       case switcherPage.connexion:
         return _generalStructure.myBodyBuild(context,_frontConnect.FrontC(context, this));

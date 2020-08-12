@@ -13,6 +13,7 @@ class ElementsAppBox{
   static final Color  _clBlack = Colors.black;
   static final Color  _clGrey800 = Colors.grey[800];
 
+  Color get defaultTextFieldColor => _textFieldColor;
   Color get clgr => _clgr;
   Color get clBlack => _clBlack;
   Color get clGrey800 => _clGrey800;
@@ -25,13 +26,14 @@ class ElementsAppBox{
   static bool _drawerShow =true;
   static final bool _debugShow =false;
   static bool _appBarShow =true;
+  static final bool _checkVal = false;
+  static final bool _autovalidate = false;
 
   bool get DRAWERSHOW => _drawerShow;
   bool get DEBUGSHOW => _debugShow;
   bool get APPBARSHOW => _appBarShow;
-  ///boolean
-
-
+  bool get CHECKVAL => _checkVal;
+  bool get AUTOVALIDATE => _autovalidate;
   ///Alignment
 
   static final Alignment _alignmentStart = Alignment.bottomRight;
@@ -76,6 +78,10 @@ class ElementsAppBox{
   String get PASSWORD => _passWord;
   static final String _connexion = 'CONNEXION';
   String get CONNEXION => _connexion;
+  static final String _name = 'Nom';
+  String get NAME => _name;
+  static final String _mail = 'Email';
+  String get MAIL => _mail;
   static final String _register = 'Inscription';
   String get REGISTER => _register;
   static final String _forgotPassWord = 'Mot de Passe Oublié';
@@ -84,36 +90,104 @@ class ElementsAppBox{
   String get BACKBUTTON => _backButton;
   static final String _okButton = 'OK';
   String get OKBUTTON => _okButton;
+  static final String _cPassword = 'Confirmer le Mot de Passe';
+  String get CPASSWORD => _cPassword;
+  static final _address = 'Adresse';
+  String get ADDRESS => _address;
+  static final _floor = 'Etage';
+  String get FLOOR => _floor;
+  static final String _elevator = 'Ascenseur';
+  String get ELEVATOR => _elevator;
+  static final _code = 'Code';
+  String get CODE => _code;
+  static final _zip = 'CP';
+  String get ZIP => _zip;
+  static final _city = 'Ville';
+  String get CITY => _city;
+  static final _door = 'Porte';
+  String get DOOR => _door;
+  static final String _animal = 'Animaux de Compagnie';
+  String get ANIMAL => _animal;
+  static final String _validate = 'Valider';
+  String get VALIDATE => _validate;
+  static final String _validName = 'Entrez un nom valide';
+  String get VALIDNAME => _validName;
+  static final String _validPhone = 'Entrez un numéro de téléphone correct';
+  String get VALIDPHONE => _validPhone;
+  static final String _validMail = 'Entrez une adresse mail valide';
+  String get VALIDMAIL => _validMail;
+  static final String _permissions = "Accepter les conditions générales d'utilisations";
+  String get PERMISSIONS => _permissions;
   ///Text
+
+  String validateEmail(String value) {
+    if (value.length > 0) {
+      return value;
+    } else {
+      print('ta mere');
+      return null;
+    }
+  }
+
+  String validateTESTEmail(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    if (!regex.hasMatch(value))
+      return VALIDMAIL;
+    else {
+      print('ta mere');
+      return null;
+    }
+  }
+
 ///Drawer
   DrawerSwitchCase _DRAWERSWITCHCASE = DrawerSwitchCase();
   get GETDRAWERSWITCHCASE => _DRAWERSWITCHCASE;
 
 
-  Widget whiteTextField(String text, TextEditingController textEditingController, bool visible) {
+  Widget classicTextField(String text, Color color, TextInputType type, Icon icon, TextEditingController textEditingController) {
     return (
-      TextField(
+        TextFormField(
+          style: TextStyle(
+            color: color,
+          ),
+          controller: textEditingController,
+          decoration: InputDecoration(
+            hintText: text,
+            hintStyle: TextStyle(
+              color: color,
+            ),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: color,
+              ),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: color,
+              ),
+            ),
+            prefixIcon: icon,
+          ),
+          keyboardType: type,
+        )
+    );
+  }
 
-        style: TextStyle(
-          color: _textFieldColor,
-        ),
-        controller: textEditingController,
-        obscureText: visible,
-        decoration: InputDecoration(
-          hintText: text,
-          hintStyle: TextStyle(
-            color: _textFieldColor,
-          ),
-          enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: _textFieldColor,
-            ),
-          ),
-          focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: _textFieldColor,
-            ),
-          ),
+  Widget blueFlatButton(String text) {
+    return (
+      FlatButton(
+        color: Colors.transparent,
+        textColor: Colors.lightBlue,
+        disabledColor: Colors.grey,
+        disabledTextColor: Colors.black,
+        padding: EdgeInsets.all(0.0),
+        splashColor: Colors.blueAccent,
+        onPressed: () {},
+        child: Text(
+          text,
+          style: TextStyle(fontSize: 12.0),
         ),
       )
     );

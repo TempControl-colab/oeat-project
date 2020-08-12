@@ -14,7 +14,7 @@ enum switcherPage{
 
 class GestionSwitch extends AbstractBloc{
 
-  switcherPage enu=switcherPage.connexion;
+  switcherPage enu=switcherPage.inscription;
 
   OptionBloc(){
     sink.add(enu);

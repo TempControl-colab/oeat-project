@@ -70,11 +70,11 @@ class FrontConnect {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width/1.5,
-                    child: _ELEMENTS.whiteTextField(_ELEMENTS.MAILADRESS, emailController, false),
+                    child: _ELEMENTS.classicTextField(_ELEMENTS.MAILADRESS, _ELEMENTS.defaultTextFieldColor, TextInputType.text, null, emailController),
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width/1.5,
-                    child: _ELEMENTS.whiteTextField(_ELEMENTS.PASSWORD, passWordController, true),
+                    child: _ELEMENTS.classicTextField(_ELEMENTS.MAILADRESS, _ELEMENTS.defaultTextFieldColor, TextInputType.text, null, passWordController),
                   ),
                   Container(
                       margin: EdgeInsets.only(left: 0, top: 200, right: 0, bottom: 0),
@@ -92,11 +92,12 @@ class FrontConnect {
                         textColor: Colors.blue,
                         color: Colors.black.withOpacity(0.4),
                           onPressed: () {
-                            String mail = emailController.text;
-                            String pass = passWordController.text;
-                            print(mail + " : " + pass);
-                            print(userService.getTestUser(mail, pass));
-                      },
+                            if(userService.getTestUser(emailController.text, passWordController.text) != null) {
+                              print('YES');
+                            } else {
+                              print('NO');
+                            }
+                          },
                           shape: Border(
                             top: BorderSide(
                                 color: Colors.white,
@@ -112,7 +113,7 @@ class FrontConnect {
                           child: Container(
                             width: MediaQuery.of(context).size.width/1,
                             child: Text(_ELEMENTS.OKBUTTON, style: TextStyle(fontSize: 20, color: Colors.white), textAlign: TextAlign.center,),
-                          )
+                          ),
                       )
                   ),
                 ],
@@ -127,32 +128,8 @@ class FrontConnect {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround, //spaceBetween pour le rendu final
                     children: [
-                      FlatButton(
-                        color: Colors.transparent,
-                        textColor: Colors.lightBlue,
-                        disabledColor: Colors.grey,
-                        disabledTextColor: Colors.black,
-                        padding: EdgeInsets.all(0.0),
-                        splashColor: Colors.blueAccent,
-                        onPressed: () {},
-                        child: Text(
-                          _ELEMENTS.FORGOTPASSWORD,
-                          style: TextStyle(fontSize: 12.0),
-                        ),
-                      ),
-                      FlatButton(
-                        color: Colors.transparent,
-                        textColor: Colors.lightBlue,
-                        disabledColor: Colors.grey,
-                        disabledTextColor: Colors.black,
-                        padding: EdgeInsets.all(0.0),
-                        splashColor: Colors.blueAccent,
-                        onPressed: () {},
-                        child: Text(
-                          _ELEMENTS.REGISTER,
-                          style: TextStyle(fontSize: 12.0),
-                        ),
-                      ),
+                      _ELEMENTS.blueFlatButton(_ELEMENTS.FORGOTPASSWORD),
+                      _ELEMENTS.blueFlatButton(_ELEMENTS.REGISTER),
                     ],
                   ),
                 ],
@@ -162,12 +139,6 @@ class FrontConnect {
         ],
       ),
     );
-  }
-
-  bool test() {
-    UserService userService = new UserService();
-    userService.getAllUsers();
-    return true;
   }
 
 }

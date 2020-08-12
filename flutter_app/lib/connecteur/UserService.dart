@@ -44,24 +44,14 @@ class UserService {
     QuerySnapshot querySnapshot =
     await dbUsers.where('email', isEqualTo: mail).where('passWord', isEqualTo: pass).getDocuments();
     if (querySnapshot.documents.length > 0) {
-      print('NON NULL');
+      print('Connexion successful !');
       DocumentSnapshot documentSnapshot = querySnapshot.documents.first;
+      print(documentSnapshot.data);
+      print(documentSnapshot.documentID);
       return User.fromFirestore(documentSnapshot);
     }
-    print('NULL');
+    print('Wrong email or password');
     return null;
-  }
-
-  bool checkUserConnect(String mailAdress, String passWord) {
-    print('Recherche d''erreur 1');
-    var user = dbUsers.where("email" == mailAdress).where("passWord" == passWord); //erreur sur les where
-    print('Recherche d''erreur 2');
-    if (user != null) {
-      print('Recherche d''erreur 3');
-      return true;
-    }
-    print('Recherche d''erreur 4');
-    return false;
   }
 
 }
