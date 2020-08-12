@@ -69,11 +69,11 @@ class FrontConnect {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width/1.5,
-                    child: _ELEMENTS.whiteTextField(_ELEMENTS.MAILADRESS, emailController),
+                    child: _ELEMENTS.whiteTextField(_ELEMENTS.MAILADRESS, emailController, false),
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width/1.5,
-                    child: _ELEMENTS.whiteTextField(_ELEMENTS.PASSWORD, passWordController),
+                    child: _ELEMENTS.whiteTextField(_ELEMENTS.PASSWORD, passWordController, true),
                   ),
                   Container(
                       margin: EdgeInsets.only(left: 0, top: 200, right: 0, bottom: 0),
