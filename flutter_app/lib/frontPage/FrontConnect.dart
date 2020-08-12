@@ -9,6 +9,10 @@ import 'package:flutterapp/style/StyleApp.dart';
 class FrontConnect {
   ElementsAppBox _ELEMENTS = ElementsAppBox();
 
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passWordController = new TextEditingController();
+
+
   Widget FrontC (BuildContext context, State state) {
     return centerScreen(context, state);
   }
@@ -65,11 +69,11 @@ class FrontConnect {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width/1.5,
-                    child: _ELEMENTS.whiteTextField(_ELEMENTS.MAILADRESS),
+                    child: _ELEMENTS.whiteTextField(_ELEMENTS.MAILADRESS, emailController),
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width/1.5,
-                    child: _ELEMENTS.whiteTextField(_ELEMENTS.PASSWORD),
+                    child: _ELEMENTS.whiteTextField(_ELEMENTS.PASSWORD, passWordController),
                   ),
                   Container(
                       margin: EdgeInsets.only(left: 0, top: 200, right: 0, bottom: 0),
@@ -86,7 +90,10 @@ class FrontConnect {
                       child : RaisedButton(
                         textColor: Colors.blue,
                         color: Colors.black.withOpacity(0.4),
-                          onPressed: () {},
+                          onPressed: () {
+                            print(emailController.text);
+                            print(passWordController.text);
+                      },
                           shape: Border(
                             top: BorderSide(
                                 color: Colors.white,

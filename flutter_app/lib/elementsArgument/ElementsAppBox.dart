@@ -90,12 +90,13 @@ class ElementsAppBox{
   get GETDRAWERSWITCHCASE => _DRAWERSWITCHCASE;
 
 
-  Widget whiteTextField(String text) {
+  Widget whiteTextField(String text, TextEditingController textEditingController) {
     return (
       TextField(
         style: TextStyle(
           color: _textFieldColor,
         ),
+        controller: textEditingController,
         decoration: InputDecoration(
           hintText: text,
           hintStyle: TextStyle(

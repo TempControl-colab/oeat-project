@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
 
-    _service.addUser(_user.toMap());
+    //_service.addUser(_user.toMap());
 
     switch(_gestionSwitch.what){
       case switcherPage.home:
