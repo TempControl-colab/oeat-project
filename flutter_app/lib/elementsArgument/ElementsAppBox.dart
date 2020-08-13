@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/blockGestion/DrawerSwitchCase.dart';
+import 'package:flutterapp/frontPage/FrontInscription.dart';
 
 
 class ElementsAppBox{

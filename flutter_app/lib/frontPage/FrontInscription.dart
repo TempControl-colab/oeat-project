@@ -188,26 +188,58 @@ class _FrontInscription extends State<FrontInscription>{
                             color: Colors.black.withOpacity(0.4),
                             onPressed: () {
                               print('tentative d''inscription');
-                              print(EmailValidator.validate(mailController.text));
-                              if (EmailValidator.validate(mailController.text) == true) {
-                                if (passwordController2.text == passwordController1.text) {
-                                  User _user = User(
-                                      nameController.text,
-                                      mailController.text,
-                                      passwordController2.text,
-                                      adressController.text,
-                                      floorController.text,
-                                      int.parse(codeController.text),
-                                      zipController.text,
-                                      cityController.text,
-                                      int.parse(doorController.text));
-                                  _service.addUser(_user.toMap());
-                                }
+                              print("Verif Email valide:");
+                              if (!(mailController.text.length < 1 || nameController.text.length < 1
+                                  || passwordController1.text.length < 1 || passwordController2.text.length < 1)) {
+                                print(EmailValidator.validate(
+                                    mailController.text));
+                                if (EmailValidator.validate(
+                                    mailController.text) == true) {
+                                  /*print("Verif Email déjà utilisé:");
+                                print(_service.getUser(mailController.text, 'email'));
+                                if (_service.getUser(mailController.text, 'email') == null) {*/
+                                  print("Verif Mots de passes identiques:");
+                                  print(passwordController2.text ==
+                                      passwordController1.text);
+                                  if (passwordController2.text ==
+                                      passwordController1.text) {
+                                    if (codeController.text.length == 0) {
+                                      codeController.text = '0';
+                                    }
+                                    if (zipController.text.length == 0) {
+                                      zipController.text = '0';
+                                    }
+                                    if (floorController.text.length == 0) {
+                                      floorController.text = '0';
+                                    }
+                                    if (doorController.text.length == 0) {
+                                      doorController.text = '0';
+                                    }
+                                    User _user = User(
+                                        mailController.text,
+                                        nameController.text,
+                                        passwordController2.text,
+                                        adressController.text,
+                                        int.parse(floorController.text),
+                                        int.parse(codeController.text),
+                                        int.parse(zipController.text),
+                                        cityController.text,
+                                        int.parse(doorController.text),
+                                        true,
+                                        false);
+                                    _service.addUser(_user.toMap());
+                                  } else {
+                                    print('Mot de passe non identique');
+                                  }
+                                  /*}
                                 else {
-                                  print('Passwords not same');
+                                  print('Mail déjà utilisé');
+                                }*/
+                                } else {
+                                  print('Adresse mail foireuse');
                                 }
                               } else {
-                                print('Adresse mail foireuse');
+                                print('Champs obligatoires non remplis');
                               }
                             },
                             shape: Border(

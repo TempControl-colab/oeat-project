@@ -27,8 +27,14 @@ class UserService {
   Future<User> getUser(String name,String thisIs) async {
     QuerySnapshot querySnapshot =
     await dbUsers.where(thisIs, isEqualTo: name).getDocuments();
-    DocumentSnapshot documentSnapshot = querySnapshot.documents.first;
-    return User.fromFirestore(documentSnapshot);
+    if (querySnapshot.documents.length > 0) {
+      DocumentSnapshot documentSnapshot = querySnapshot.documents.first;
+      print(documentSnapshot);
+      return User.fromFirestore(documentSnapshot);
+    }
+
+    print('N''existe pas');
+    return null;
   }
 
   Future<void> addUser(Map<String, dynamic> map) =>

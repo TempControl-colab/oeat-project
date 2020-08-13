@@ -51,9 +51,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   GestionSwitch _gestionSwitch = new GestionSwitch();
 
-  UserService _service = UserService();
+  //UserService _service = UserService();
 
-  User _user = User('testuser','testpass','testname','testemail','testprenom',33,'teststreet','testville',39);
+  //User _user = User('testuser','testpass','testname','testemail','testprenom',33,'teststreet','testville',39);
 
 
   @override
