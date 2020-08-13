@@ -22,45 +22,7 @@ class FrontConnect {
       child: Stack(
         children: [
           Center(
-            child: Container(
-              height: MediaQuery.of(context).size.height/1,
-              width: MediaQuery.of(context).size.width/1,
-              child: Opacity(
-                opacity: 1.0,
-                child: Card(
-                  color: Color.fromRGBO(255, 255, 255, 0.1),
-                ),
-              ),
-            ),
-          ),
-          Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                width: MediaQuery.of(context).size.width/1,
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.lightBlue.withOpacity(0.6),
-                      spreadRadius: 5,
-                      blurRadius: 5,
-                      offset: Offset(0, 0), // changes position of shadow
-                    ),
-                  ],
-                  border: Border(
-                      bottom: BorderSide(color: Colors.white, width: 2.5)
-                  ),
-                ),
-                child: Text(
-                  _ELEMENTS.CONNEXION.toUpperCase(),
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue,
-                  ),
-                  textAlign: TextAlign.center,
-                  textScaleFactor: 2.0,
-                ),
-              )
-
+            child: _ELEMENTS.pageTitle(context, _ELEMENTS.CONNEXION, Colors.white, Colors.lightBlue, Colors.white),
           ),
           Center(
               child: Column(
@@ -68,11 +30,11 @@ class FrontConnect {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width/1.5,
-                    child: _ELEMENTS.classicTextField(_ELEMENTS.MAIL, Colors.white, TextInputType.emailAddress, null, emailController),
+                    child: _ELEMENTS.classicTextField(_ELEMENTS.MAIL, Colors.white, TextInputType.emailAddress, null, emailController, false),
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width/1.5,
-                    child: _ELEMENTS.classicTextField(_ELEMENTS.PASSWORD, Colors.white, TextInputType.visiblePassword, null, passWordController),
+                    child: _ELEMENTS.classicTextField(_ELEMENTS.PASSWORD, Colors.white, TextInputType.visiblePassword, null, passWordController, true),
                   ),
                   Container(
                       margin: EdgeInsets.only(left: 0, top: 200, right: 0, bottom: 0),

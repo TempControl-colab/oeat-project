@@ -43,36 +43,37 @@ class _FrontInscription extends State<FrontInscription>{
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    _ELEMENTS.pageTitle(context, _ELEMENTS.REGISTER, Colors.white, Colors.lightBlue, Colors.white),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.NAME, Colors.white, TextInputType.text, Icon(Icons.person_outline, color: Colors.white,), nameController)
+                      child: _ELEMENTS.classicTextField(_ELEMENTS.NAME, Colors.white, TextInputType.text, Icon(Icons.person_outline, color: Colors.white,), nameController, false)
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.MAIL, Colors.white, TextInputType.emailAddress, Icon(Icons.mail_outline, color: Colors.white), mailController),
+                      child: _ELEMENTS.classicTextField(_ELEMENTS.MAIL, Colors.white, TextInputType.emailAddress, Icon(Icons.mail_outline, color: Colors.white), mailController, false),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.PASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white), passwordController1),
+                      child: _ELEMENTS.classicTextField(_ELEMENTS.PASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white), passwordController1, true),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.CPASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white), passwordController2),
+                      child: _ELEMENTS.classicTextField(_ELEMENTS.CPASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white), passwordController2, true),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.ADDRESS, Colors.white, TextInputType.text, Icon(Icons.location_on_outlined, color: Colors.white), adressController),
+                      child: _ELEMENTS.classicTextField(_ELEMENTS.ADDRESS, Colors.white, TextInputType.text, Icon(Icons.location_on_outlined, color: Colors.white), adressController, false),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width/5,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.FLOOR, Colors.white, TextInputType.number, null, floorController),
+                          child: _ELEMENTS.classicTextField(_ELEMENTS.FLOOR, Colors.white, TextInputType.number, null, floorController, false),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width/4,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.CODE, Colors.white, TextInputType.text, null, codeController),
+                          child: _ELEMENTS.classicTextField(_ELEMENTS.CODE, Colors.white, TextInputType.text, null, codeController, false),
                         ),
                       ],
                     ),
@@ -81,17 +82,17 @@ class _FrontInscription extends State<FrontInscription>{
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width/2.9,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.ZIP, Colors.white, TextInputType.number, null, zipController),
+                          child: _ELEMENTS.classicTextField(_ELEMENTS.ZIP, Colors.white, TextInputType.number, null, zipController, false),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width/2.5,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.CITY, Colors.white, TextInputType.name, null, cityController),
+                          child: _ELEMENTS.classicTextField(_ELEMENTS.CITY, Colors.white, TextInputType.name, null, cityController, false),
                         ),
                       ],
                     ),
                     Container(
                         width: MediaQuery.of(context).size.width/1.2,
-                        child: _ELEMENTS.classicTextField(_ELEMENTS.DOOR, Colors.white, TextInputType.text, null, doorController),
+                        child: _ELEMENTS.classicTextField(_ELEMENTS.DOOR, Colors.white, TextInputType.text, null, doorController, false),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
