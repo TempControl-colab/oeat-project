@@ -15,9 +15,9 @@ class FrontInscription extends StatefulWidget {
 class _FrontInscription extends State<FrontInscription>{
 
   ElementsAppBox _ELEMENTS = ElementsAppBox();
-  bool _checkValue = false;
-  bool _checkValue2 = false;
-  bool _checkValue3 = false;
+  bool _hasElevator = false;
+  bool _hasPet = false;
+  bool _hasAcceptedRules = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController nameController = new TextEditingController();
   TextEditingController mailController = new TextEditingController();
@@ -106,10 +106,10 @@ class _FrontInscription extends State<FrontInscription>{
                                   color: Colors.white,
                                 ),
                               ),
-                              value: _checkValue,
+                              value: _hasElevator,
                               onChanged: (bool value) {
                                 setState(() {
-                                  _checkValue = value;
+                                  _hasElevator = value;
                                 });
                               },
                               activeColor: Colors.lightBlueAccent,
@@ -127,10 +127,10 @@ class _FrontInscription extends State<FrontInscription>{
                                   color: Colors.white,
                                 ),
                               ),
-                              value: _checkValue2,
+                              value: _hasPet,
                               onChanged: (bool value) {
                                 setState(() {
-                                  _checkValue2 = value;
+                                  _hasPet = value;
                                 });
                               },
                               activeColor: Colors.lightBlueAccent,
@@ -150,10 +150,11 @@ class _FrontInscription extends State<FrontInscription>{
                               color: Colors.white,
                             ),
                           ),
-                          value: _checkValue3,
+                          value: _hasAcceptedRules,
                           onChanged: (bool value){
                             setState(() {
-                              _checkValue3 = value;
+                              _hasAcceptedRules = value;
+                              print(_hasAcceptedRules);
                             });
                           },
                           activeColor: Colors.lightBlueAccent,
@@ -188,58 +189,65 @@ class _FrontInscription extends State<FrontInscription>{
                             color: Colors.black.withOpacity(0.4),
                             onPressed: () {
                               print('tentative d''inscription');
-                              print("Verif Email valide:");
-                              if (!(mailController.text.length < 1 || nameController.text.length < 1
-                                  || passwordController1.text.length < 1 || passwordController2.text.length < 1)) {
-                                print(EmailValidator.validate(
-                                    mailController.text));
-                                if (EmailValidator.validate(
-                                    mailController.text) == true) {
-                                  /*print("Verif Email déjà utilisé:");
+                              if (_hasAcceptedRules == true) {
+                                print("Verif Email valide:");
+                                if (!(mailController.text.length < 1 ||
+                                    nameController.text.length < 1
+                                    || passwordController1.text.length < 1 ||
+                                    passwordController2.text.length < 1)) {
+                                  print(EmailValidator.validate(
+                                      mailController.text));
+                                  if (EmailValidator.validate(
+                                      mailController.text) == true) {
+                                    /*print("Verif Email déjà utilisé:");
                                 print(_service.getUser(mailController.text, 'email'));
                                 if (_service.getUser(mailController.text, 'email') == null) {*/
-                                  print("Verif Mots de passes identiques:");
-                                  print(passwordController2.text ==
-                                      passwordController1.text);
-                                  if (passwordController2.text ==
-                                      passwordController1.text) {
-                                    if (codeController.text.length == 0) {
-                                      codeController.text = '0';
+                                    print("Verif Mots de passes identiques:");
+                                    print(passwordController2.text ==
+                                        passwordController1.text);
+                                    if (passwordController2.text ==
+                                        passwordController1.text) {
+                                      if (codeController.text.length == 0) {
+                                        codeController.text = '0';
+                                      }
+                                      if (zipController.text.length == 0) {
+                                        zipController.text = '0';
+                                      }
+                                      if (floorController.text.length == 0) {
+                                        floorController.text = '0';
+                                      }
+                                      if (doorController.text.length == 0) {
+                                        doorController.text = '0';
+                                      }
+                                      User _user = User(
+                                          mailController.text,
+                                          nameController.text,
+                                          passwordController2.text,
+                                          adressController.text,
+                                          int.parse(floorController.text),
+                                          int.parse(codeController.text),
+                                          int.parse(zipController.text),
+                                          cityController.text,
+                                          int.parse(doorController.text),
+                                          _hasElevator,
+                                          _hasPet
+                                      );
+                                      _service.addUser(_user.toMap());
+                                    } else {
+                                      print('Mot de passe non identique');
                                     }
-                                    if (zipController.text.length == 0) {
-                                      zipController.text = '0';
-                                    }
-                                    if (floorController.text.length == 0) {
-                                      floorController.text = '0';
-                                    }
-                                    if (doorController.text.length == 0) {
-                                      doorController.text = '0';
-                                    }
-                                    User _user = User(
-                                        mailController.text,
-                                        nameController.text,
-                                        passwordController2.text,
-                                        adressController.text,
-                                        int.parse(floorController.text),
-                                        int.parse(codeController.text),
-                                        int.parse(zipController.text),
-                                        cityController.text,
-                                        int.parse(doorController.text),
-                                        true,
-                                        false);
-                                    _service.addUser(_user.toMap());
-                                  } else {
-                                    print('Mot de passe non identique');
-                                  }
-                                  /*}
+                                    /*}
                                 else {
                                   print('Mail déjà utilisé');
                                 }*/
+                                  } else {
+                                    print('Adresse mail foireuse');
+                                  }
                                 } else {
-                                  print('Adresse mail foireuse');
+                                  print('Champs obligatoires non remplis');
                                 }
                               } else {
-                                print('Champs obligatoires non remplis');
+                                print('Vous devez accepter le réglement.');
                               }
                             },
                             shape: Border(
