@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/connecteur/UserService.dart';
-import 'package:flutterapp/connecteur/Users.dart';
 import 'package:flutterapp/elementsArgument/ElementsAppBox.dart';
-import 'package:email_validator/email_validator.dart';
 
 class FrontInscription extends StatefulWidget {
   FrontInscription({Key key}) : super(key: key);
@@ -15,9 +12,10 @@ class FrontInscription extends StatefulWidget {
 class _FrontInscription extends State<FrontInscription>{
 
   ElementsAppBox _ELEMENTS = ElementsAppBox();
-  bool _hasElevator = false;
-  bool _hasPet = false;
-  bool _hasAcceptedRules = false;
+  String _nom;
+  bool _checkValue = false;
+  bool _checkValue2 = false;
+  bool _checkValue3 = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController nameController = new TextEditingController();
   TextEditingController mailController = new TextEditingController();
@@ -29,7 +27,6 @@ class _FrontInscription extends State<FrontInscription>{
   TextEditingController zipController = new TextEditingController();
   TextEditingController cityController = new TextEditingController();
   TextEditingController doorController = new TextEditingController();
-  UserService _service = UserService();
 
   @override
   Widget build(BuildContext context) {
@@ -44,36 +41,37 @@ class _FrontInscription extends State<FrontInscription>{
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    _ELEMENTS.pageTitle(context, _ELEMENTS.REGISTER, Colors.white, Colors.lightBlue, Colors.white),
                     Container(
                         width: MediaQuery.of(context).size.width/1.2,
-                        child: _ELEMENTS.classicTextField(_ELEMENTS.NAME, Colors.white, TextInputType.text, Icon(Icons.person_outline, color: Colors.white,), nameController)
+                        child: _ELEMENTS.classicTextField(_ELEMENTS.NAME, Colors.white, TextInputType.text, Icon(Icons.person_outline, color: Colors.white,), nameController, false)
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.MAIL, Colors.white, TextInputType.emailAddress, Icon(Icons.mail_outline, color: Colors.white), mailController),
+                      child: _ELEMENTS.classicTextField(_ELEMENTS.MAIL, Colors.white, TextInputType.emailAddress, Icon(Icons.mail_outline, color: Colors.white), mailController, false),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.PASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white), passwordController1),
+                      child: _ELEMENTS.classicTextField(_ELEMENTS.PASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white), passwordController1, true),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.CPASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white), passwordController2),
+                      child: _ELEMENTS.classicTextField(_ELEMENTS.CPASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white), passwordController2, true),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.ADDRESS, Colors.white, TextInputType.text, null, adressController),
+                      child: _ELEMENTS.classicTextField(_ELEMENTS.ADDRESS, Colors.white, TextInputType.text, Icon(null, color: Colors.white), adressController, false),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width/5,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.FLOOR, Colors.white, TextInputType.number, null, floorController),
+                          child: _ELEMENTS.classicTextField(_ELEMENTS.FLOOR, Colors.white, TextInputType.number, null, floorController, false),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width/4,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.CODE, Colors.white, TextInputType.text, null, codeController),
+                          child: _ELEMENTS.classicTextField(_ELEMENTS.CODE, Colors.white, TextInputType.text, null, codeController, false),
                         ),
                       ],
                     ),
@@ -82,17 +80,17 @@ class _FrontInscription extends State<FrontInscription>{
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width/2.9,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.ZIP, Colors.white, TextInputType.number, null, zipController),
+                          child: _ELEMENTS.classicTextField(_ELEMENTS.ZIP, Colors.white, TextInputType.number, null, zipController, false),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width/2.5,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.CITY, Colors.white, TextInputType.text, null, cityController),
+                          child: _ELEMENTS.classicTextField(_ELEMENTS.CITY, Colors.white, TextInputType.text, null, cityController, false),
                         ),
                       ],
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.DOOR, Colors.white, TextInputType.text, null, doorController),
+                      child: _ELEMENTS.classicTextField(_ELEMENTS.DOOR, Colors.white, TextInputType.text, null, doorController, false),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -106,10 +104,10 @@ class _FrontInscription extends State<FrontInscription>{
                                   color: Colors.white,
                                 ),
                               ),
-                              value: _hasElevator,
+                              value: _checkValue,
                               onChanged: (bool value) {
                                 setState(() {
-                                  _hasElevator = value;
+                                  _checkValue = value;
                                 });
                               },
                               activeColor: Colors.lightBlueAccent,
@@ -127,10 +125,10 @@ class _FrontInscription extends State<FrontInscription>{
                                   color: Colors.white,
                                 ),
                               ),
-                              value: _hasPet,
+                              value: _checkValue2,
                               onChanged: (bool value) {
                                 setState(() {
-                                  _hasPet = value;
+                                  _checkValue2 = value;
                                 });
                               },
                               activeColor: Colors.lightBlueAccent,
@@ -150,11 +148,10 @@ class _FrontInscription extends State<FrontInscription>{
                               color: Colors.white,
                             ),
                           ),
-                          value: _hasAcceptedRules,
+                          value: _checkValue3,
                           onChanged: (bool value){
                             setState(() {
-                              _hasAcceptedRules = value;
-                              print(_hasAcceptedRules);
+                              _checkValue3 = value;
                             });
                           },
                           activeColor: Colors.lightBlueAccent,
@@ -188,67 +185,7 @@ class _FrontInscription extends State<FrontInscription>{
                             textColor: Colors.blue,
                             color: Colors.black.withOpacity(0.4),
                             onPressed: () {
-                              print('tentative d''inscription');
-                              if (_hasAcceptedRules == true) {
-                                print("Verif Email valide:");
-                                if (!(mailController.text.length < 1 ||
-                                    nameController.text.length < 1
-                                    || passwordController1.text.length < 1 ||
-                                    passwordController2.text.length < 1)) {
-                                  print(EmailValidator.validate(
-                                      mailController.text));
-                                  if (EmailValidator.validate(
-                                      mailController.text) == true) {
-                                    /*print("Verif Email déjà utilisé:");
-                                print(_service.getUser(mailController.text, 'email'));
-                                if (_service.getUser(mailController.text, 'email') == null) {*/
-                                    print("Verif Mots de passes identiques:");
-                                    print(passwordController2.text ==
-                                        passwordController1.text);
-                                    if (passwordController2.text ==
-                                        passwordController1.text) {
-                                      if (codeController.text.length == 0) {
-                                        codeController.text = '0';
-                                      }
-                                      if (zipController.text.length == 0) {
-                                        zipController.text = '0';
-                                      }
-                                      if (floorController.text.length == 0) {
-                                        floorController.text = '0';
-                                      }
-                                      if (doorController.text.length == 0) {
-                                        doorController.text = '0';
-                                      }
-                                      User _user = User(
-                                          mailController.text,
-                                          nameController.text,
-                                          passwordController2.text,
-                                          adressController.text,
-                                          int.parse(floorController.text),
-                                          int.parse(codeController.text),
-                                          int.parse(zipController.text),
-                                          cityController.text,
-                                          int.parse(doorController.text),
-                                          _hasElevator,
-                                          _hasPet
-                                      );
-                                      _service.addUser(_user.toMap());
-                                    } else {
-                                      print('Mot de passe non identique');
-                                    }
-                                    /*}
-                                else {
-                                  print('Mail déjà utilisé');
-                                }*/
-                                  } else {
-                                    print('Adresse mail foireuse');
-                                  }
-                                } else {
-                                  print('Champs obligatoires non remplis');
-                                }
-                              } else {
-                                print('Vous devez accepter le réglement.');
-                              }
+
                             },
                             shape: Border(
                               top: BorderSide(

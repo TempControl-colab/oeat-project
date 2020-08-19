@@ -119,6 +119,10 @@ class ElementsAppBox{
   String get VALIDMAIL => _validMail;
   static final String _permissions = "Accepter les conditions générales d'utilisations";
   String get PERMISSIONS => _permissions;
+  static final String _yes = "OUI";
+  String get YES => _yes;
+  static final String _no = "NON";
+  String get NO => _no;
   ///Text
 
   String validateEmail(String value) {
@@ -146,8 +150,60 @@ class ElementsAppBox{
   DrawerSwitchCase _DRAWERSWITCHCASE = DrawerSwitchCase();
   get GETDRAWERSWITCHCASE => _DRAWERSWITCHCASE;
 
+  Widget pageTitle(BuildContext context, String text, Color textColor,
+      Color shadowColor, Color lineColor) {
+    return (
+        Container(
+          color: Colors.white12,
+          width: MediaQuery
+              .of(context)
+              .size
+              .width / 1,
+          child: Column(
+            children: [
+              Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width / 1,
+                    child: Text(
+                      text.toUpperCase(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: textColor,
+                      ),
+                      textAlign: TextAlign.center,
+                      textScaleFactor: 2.0,
+                    ),
+                  )
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: shadowColor.withOpacity(0.6),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                    ),
+                  ],
+                ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 0.0),
+                  child: Container(height: 2.5,
+                    color: lineColor,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        )
+    );
+  }
 
-  Widget classicTextField(String text, Color color, TextInputType type, Icon icon, TextEditingController textEditingController) {
+
+  Widget classicTextField(String text, Color color, TextInputType type, Icon icon, TextEditingController textEditingController, bool obscureText) {
     return (
         TextFormField(
           style: TextStyle(
@@ -172,6 +228,7 @@ class ElementsAppBox{
             prefixIcon: icon,
           ),
           keyboardType: type,
+          obscureText: obscureText,
         )
     );
   }

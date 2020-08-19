@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     switch(_gestionSwitch.what){
       case switcherPage.home:
-        return _generalStructure.myBodyBuild(context,_frontHome.FrontH(context));
+        return _generalStructure.myBodyBuild(context,_frontHome.FrontH(context, Colors.red, 2.5, BorderStyle.solid));
         break;
       case switcherPage.inscription:
         return _generalStructure.myBodyBuild(context,_frontInscription);

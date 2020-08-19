@@ -19,124 +19,85 @@ class FrontConnect {
   }
 
   Widget centerScreen(BuildContext context, State state) {
-    return Center(
-
-      child: Stack(
-        children: [
-          Center(
-            child: Container(
-              height: MediaQuery.of(context).size.height/1,
-              width: MediaQuery.of(context).size.width/1,
-              child: Opacity(
-                opacity: 1.0,
-                child: Card(
-                  color: Color.fromRGBO(255, 255, 255, 0.1),
+    return SingleChildScrollView(
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Stack(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _ELEMENTS.pageTitle(context, _ELEMENTS.CONNEXION, Colors.white, Colors.lightBlue, Colors.white),
+                Container(
+                  margin: EdgeInsets.only(left: 0, top: 175, right: 0, bottom: 0),
+                  width: MediaQuery.of(context).size.width/1.5,
+                  child: _ELEMENTS.classicTextField(_ELEMENTS.MAIL, Colors.white, TextInputType.emailAddress, null, emailController, false),
                 ),
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              width: MediaQuery.of(context).size.width/1,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.lightBlue.withOpacity(0.6),
-                    spreadRadius: 5,
-                    blurRadius: 5,
-                    offset: Offset(0, 0), // changes position of shadow
-                  ),
-                ],
-                border: Border(
-                  bottom: BorderSide(color: Colors.white, width: 2.5)
+                Container(
+                  width: MediaQuery.of(context).size.width/1.5,
+                  child: _ELEMENTS.classicTextField(_ELEMENTS.PASSWORD, Colors.white, TextInputType.text, null, passWordController, true),
                 ),
-              ),
-              child: Text(
-                _ELEMENTS.CONNEXION.toUpperCase(),
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
-                ),
-                textAlign: TextAlign.center,
-                textScaleFactor: 2.0,
-              ),
-            )
-
-          ),
-          Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width/1.5,
-                    child: _ELEMENTS.classicTextField(_ELEMENTS.MAILADRESS, _ELEMENTS.defaultTextFieldColor, TextInputType.text, null, emailController),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width/1.5,
-                    child: _ELEMENTS.classicTextField(_ELEMENTS.MAILADRESS, _ELEMENTS.defaultTextFieldColor, TextInputType.text, null, passWordController),
-                  ),
-                  Container(
-                      margin: EdgeInsets.only(left: 0, top: 200, right: 0, bottom: 0),
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.lightBlue.withOpacity(0.6),
-                            spreadRadius: 1,
-                            blurRadius: 5,
-                            offset: Offset(0, 0), // changes position of shadow
-                          ),
-                        ],
+                Container(
+                    margin: EdgeInsets.only(left: 0, top: 200, right: 0, bottom: 0),
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.lightBlue.withOpacity(0.6),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: Offset(0, 0), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child : RaisedButton(
+                      textColor: Colors.blue,
+                      color: Colors.black.withOpacity(0.4),
+                      onPressed: () {
+                        if(userService.getTestUser(emailController.text, passWordController.text) != null) {
+                          print('YES');
+                        } else {
+                          print('NO');
+                        }
+                      },
+                      shape: Border(
+                        top: BorderSide(
+                            color: Colors.white,
+                            width: 2.5,
+                            style: BorderStyle.solid
+                        ),
+                        bottom: BorderSide(
+                            color: Colors.white,
+                            width: 2.5,
+                            style: BorderStyle.solid
+                        ),
                       ),
-                      child : RaisedButton(
-                        textColor: Colors.blue,
-                        color: Colors.black.withOpacity(0.4),
-                          onPressed: () {
-                            if(userService.getTestUser(emailController.text, passWordController.text) != null) {
-                              print('YES');
-                            } else {
-                              print('NO');
-                            }
-                          },
-                          shape: Border(
-                            top: BorderSide(
-                                color: Colors.white,
-                                width: 2.5,
-                                style: BorderStyle.solid
-                            ),
-                            bottom: BorderSide(
-                              color: Colors.white,
-                              width: 2.5,
-                              style: BorderStyle.solid
-                            ),
-                          ),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width/1,
-                            child: Text(_ELEMENTS.OKBUTTON, style: TextStyle(fontSize: 20, color: Colors.white), textAlign: TextAlign.center,),
-                          ),
-                      )
-                  ),
-                ],
-              )
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width/1,
+                        child: Text(_ELEMENTS.OKBUTTON, style: TextStyle(fontSize: 20, color: Colors.white), textAlign: TextAlign.center,),
+                      ),
+                    )
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
 
-            child: Container(
-              child: Stack(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround, //spaceBetween pour le rendu final
-                    children: [
-                      _ELEMENTS.blueFlatButton(_ELEMENTS.FORGOTPASSWORD),
-                      _ELEMENTS.blueFlatButton(_ELEMENTS.REGISTER),
-                    ],
+                  child: Container(
+                    child: Stack(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround, //spaceBetween pour le rendu final
+                          children: [
+                            _ELEMENTS.blueFlatButton(_ELEMENTS.FORGOTPASSWORD),
+                            _ELEMENTS.blueFlatButton(_ELEMENTS.REGISTER),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
