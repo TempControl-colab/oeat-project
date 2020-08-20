@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/blockGestion/DrawerSwitchCase.dart';
+import 'package:flutterapp/elementsArgument/ColorAppBox.dart';
 import 'package:flutterapp/elementsArgument/ElementsAppBox.dart';
 
 class StyleFullOfApp{
 
-  ElementsAppBox _ELEMENTSARG = new ElementsAppBox();
+  ColorAppBox _COLORS = new ColorAppBox();
 
   ThemeData themeDataValue(){
     return ThemeData(
-      primaryColor: _ELEMENTSARG.clgr,
+      primaryColor: _COLORS.clgr,
       visualDensity: VisualDensity.adaptivePlatformDensity,
     );
 

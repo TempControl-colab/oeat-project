@@ -9,7 +9,6 @@ class FrontHome{
       child: RaisedButton(
 
         shape: Border(
-
           top: BorderSide(
                 color: borderColor,
                 width: borderWidth,

@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/elementsArgument/BooleanAppBox.dart';
 import 'package:flutterapp/elementsArgument/ElementsAppBox.dart';
+import 'package:flutterapp/elementsArgument/StringAppBox.dart';
+import 'package:flutterapp/elementsArgument/TextFieldAppBox.dart';
 
 class FrontInscription extends StatefulWidget {
   FrontInscription({Key key}) : super(key: key);
@@ -12,7 +15,10 @@ class FrontInscription extends StatefulWidget {
 class _FrontInscription extends State<FrontInscription>{
 
   ElementsAppBox _ELEMENTS = ElementsAppBox();
-  String _nom;
+  TextFieldAppBox _TEXTFIELDS = TextFieldAppBox();
+  StringAppBox _STRINGS = StringAppBox();
+  BooleanAppBox _BOOLEANS = BooleanAppBox();
+
   bool _checkValue = false;
   bool _checkValue2 = false;
   bool _checkValue3 = false;
@@ -34,44 +40,44 @@ class _FrontInscription extends State<FrontInscription>{
       child: SingleChildScrollView(
         child: Form(
           key: _formKey,
-          autovalidate: _ELEMENTS.AUTOVALIDATE,
+          autovalidate: _BOOLEANS.AUTOVALIDATE,
           child: Stack(
             children: [
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _ELEMENTS.pageTitle(context, _ELEMENTS.REGISTER, Colors.white, Colors.lightBlue, Colors.white),
+                    _ELEMENTS.pageTitle(context, _STRINGS.REGISTER, Colors.white, Colors.lightBlue, Colors.white),
                     Container(
                         width: MediaQuery.of(context).size.width/1.2,
-                        child: _ELEMENTS.classicTextField(_ELEMENTS.NAME, Colors.white, TextInputType.text, Icon(Icons.person_outline, color: Colors.white,), nameController, false)
+                        child: _TEXTFIELDS.classicTextField(_STRINGS.NAME, Colors.white, TextInputType.text, Icon(Icons.person_outline, color: Colors.white,), nameController, false)
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.MAIL, Colors.white, TextInputType.emailAddress, Icon(Icons.mail_outline, color: Colors.white), mailController, false),
+                      child: _TEXTFIELDS.classicTextField(_STRINGS.MAIL, Colors.white, TextInputType.emailAddress, Icon(Icons.mail_outline, color: Colors.white), mailController, false),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.PASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white), passwordController1, true),
+                      child: _TEXTFIELDS.classicTextField(_STRINGS.PASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white), passwordController1, true),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.CPASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white), passwordController2, true),
+                      child: _TEXTFIELDS.classicTextField(_STRINGS.CPASSWORD, Colors.white, TextInputType.visiblePassword, Icon(Icons.lock_outline, color: Colors.white), passwordController2, true),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.ADDRESS, Colors.white, TextInputType.text, Icon(null, color: Colors.white), adressController, false),
+                      child: _TEXTFIELDS.classicTextField(_STRINGS.ADDRESS, Colors.white, TextInputType.text, Icon(null, color: Colors.white), adressController, false),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width/5,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.FLOOR, Colors.white, TextInputType.number, null, floorController, false),
+                          child: _TEXTFIELDS.classicTextField(_STRINGS.FLOOR, Colors.white, TextInputType.number, null, floorController, false),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width/4,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.CODE, Colors.white, TextInputType.text, null, codeController, false),
+                          child: _TEXTFIELDS.classicTextField(_STRINGS.CODE, Colors.white, TextInputType.text, null, codeController, false),
                         ),
                       ],
                     ),
@@ -80,17 +86,17 @@ class _FrontInscription extends State<FrontInscription>{
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width/2.9,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.ZIP, Colors.white, TextInputType.number, null, zipController, false),
+                          child: _TEXTFIELDS.classicTextField(_STRINGS.ZIP, Colors.white, TextInputType.number, null, zipController, false),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width/2.5,
-                          child: _ELEMENTS.classicTextField(_ELEMENTS.CITY, Colors.white, TextInputType.text, null, cityController, false),
+                          child: _TEXTFIELDS.classicTextField(_STRINGS.CITY, Colors.white, TextInputType.text, null, cityController, false),
                         ),
                       ],
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width/1.2,
-                      child: _ELEMENTS.classicTextField(_ELEMENTS.DOOR, Colors.white, TextInputType.text, null, doorController, false),
+                      child: _TEXTFIELDS.classicTextField(_STRINGS.DOOR, Colors.white, TextInputType.text, null, doorController, false),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -99,7 +105,7 @@ class _FrontInscription extends State<FrontInscription>{
                           width: MediaQuery.of(context).size.width/2,
                           child: Expanded(
                             child: SwitchListTile(
-                              title: Text(_ELEMENTS.ELEVATOR,
+                              title: Text(_STRINGS.ELEVATOR,
                                 style: TextStyle(
                                   color: Colors.white,
                                 ),
@@ -120,7 +126,7 @@ class _FrontInscription extends State<FrontInscription>{
                           width: MediaQuery.of(context).size.width/2,
                           child: Expanded(
                             child: SwitchListTile(
-                              title: Text(_ELEMENTS.ANIMAL,
+                              title: Text(_STRINGS.ANIMAL,
                                 style: TextStyle(
                                   color: Colors.white,
                                 ),
@@ -143,7 +149,7 @@ class _FrontInscription extends State<FrontInscription>{
                       child: Theme(
                         data: ThemeData(unselectedWidgetColor: Colors.white),
                         child: CheckboxListTile(
-                          title: Text(_ELEMENTS.PERMISSIONS,
+                          title: Text(_STRINGS.PERMISSIONS,
                             style: TextStyle(
                               color: Colors.white,
                             ),
@@ -201,7 +207,7 @@ class _FrontInscription extends State<FrontInscription>{
                             ),
                             child: Container(
                               width: MediaQuery.of(context).size.width/1,
-                              child: Text(_ELEMENTS.REGISTER.toUpperCase(), style: TextStyle(fontSize: 20, color: Colors.white), textAlign: TextAlign.center,),
+                              child: Text(_STRINGS.REGISTER.toUpperCase(), style: TextStyle(fontSize: 20, color: Colors.white), textAlign: TextAlign.center,),
                             )
                         )
                     ),
