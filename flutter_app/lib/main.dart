@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/blockGestion/GestionSwitch.dart';
 import 'package:flutterapp/frontPage/FrontHome.dart';
+import 'package:flutterapp/frontPage/MultiPages.dart';
 import 'package:flutterapp/general/general_structure.dart';
 
 import 'blockGestion/DrawerSwitchCase.dart';
@@ -46,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
   FrontHome _frontHome = FrontHome();
   FrontConnect _frontConnect = FrontConnect();
   FrontInscription _frontInscription = FrontInscription();
+  MultiPages _multiPages = MultiPages();
   DrawerSwitchCase _drawerSwitchCase = DrawerSwitchCase();
 
 
@@ -62,8 +64,11 @@ class _MyHomePageState extends State<MyHomePage> {
     //_service.addUser(_user.toMap());
 
     switch(_gestionSwitch.what){
+      case switcherPage.multipages:
+        return _generalStructure.myBodyBuild(context, _multiPages.build(context));
+        break;
       case switcherPage.home:
-        return _generalStructure.myBodyBuild(context,_frontHome.FrontH(context, Colors.red, 2.5, BorderStyle.solid));
+        return _generalStructure.myBodyBuild(context,_frontHome.FrontH(context));
         break;
       case switcherPage.inscription:
         return _generalStructure.myBodyBuild(context,_frontInscription);

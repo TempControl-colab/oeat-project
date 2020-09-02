@@ -46,17 +46,17 @@ class UserService {
     await dbUsers.document(querySnapshot.documents.first.documentID).delete();
   }
 
-  Future<User> getTestUser(String mail,String pass) async {
+  Future<User> getTestUser(String mail, String pass) async {
     QuerySnapshot querySnapshot =
     await dbUsers.where('email', isEqualTo: mail).where('passWord', isEqualTo: pass).getDocuments();
     if (querySnapshot.documents.length > 0) {
-      print('Connexion successful !');
+      print('DEBUG : Connexion successful !');
       DocumentSnapshot documentSnapshot = querySnapshot.documents.first;
       print(documentSnapshot.data);
       print(documentSnapshot.documentID);
       return User.fromFirestore(documentSnapshot);
     }
-    print('Wrong email or password');
+    print('DEBUG : Wrong email or password');
     return null;
   }
 

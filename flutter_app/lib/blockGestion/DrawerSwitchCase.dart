@@ -10,11 +10,12 @@ enum switcherDrawer{
   inscription,
   home_connect,
   buy,
+  multipages
 }
 
 class DrawerSwitchCase extends AbstractBlocDrawer{
 
-  switcherDrawer enuDrawer=switcherDrawer.home;
+  switcherDrawer enuDrawer=switcherDrawer.multipages;
 
   OptionBloc(){
     sink.add(enuDrawer);

@@ -24,7 +24,7 @@ class ElementsAppBox{
     if (!regex.hasMatch(value))
       return _STRINGS.VALIDMAIL;
     else {
-      print('ta mere');
+      print('Regex not respected');
       return null;
     }
   }
@@ -33,8 +33,7 @@ class ElementsAppBox{
   DrawerSwitchCase _DRAWERSWITCHCASE = DrawerSwitchCase();
   get GETDRAWERSWITCHCASE => _DRAWERSWITCHCASE;
 
-  Widget pageTitle(BuildContext context, String text, Color textColor,
-      Color shadowColor, Color lineColor) {
+  Widget pageTitle(BuildContext context, String text, Color textColor, Color shadowColor, Color lineColor) {
     return (
         Container(
           color: Colors.white12,
