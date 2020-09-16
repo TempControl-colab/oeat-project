@@ -1,9 +1,9 @@
 import 'dart:async';
+import 'package:flutter/material.dart';
 
 abstract class AbstractBloc{
   dispose();
 }
-
 
 enum switcherPage{
   home,
@@ -19,11 +19,9 @@ class GestionSwitch extends AbstractBloc{
     sink.add(enu);
   }
 
-
   final _controller = StreamController<switcherPage>();
 
   Sink<switcherPage> get sink =>_controller.sink;
-
   Stream<switcherPage> get stream => _controller.stream;
 
   changer(switcherPage e){
@@ -34,5 +32,4 @@ class GestionSwitch extends AbstractBloc{
   switcherPage get what => enu;
   @override
   dispose() => _controller.close();
-
 }

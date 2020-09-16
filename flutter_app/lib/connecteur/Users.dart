@@ -2,37 +2,43 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class User {
 
-  String id;
-  String passWord;
-  String name;
   String email;
-  String firstName;
-  int numberLocation;
-  String streetLocation;
-  String cityLocation;
-  int numberCityLocation;
+  String name;
+  String passWord;
+  String adress;
+  int floor;
+  int code;
+  int zipCode;
+  String cityName;
+  int door;
+  bool hasElevator;
+  bool hasPet;
 
 
   User(
-      String id,
-      String passWord,
-      String name,
       String email,
-      String firstName,
-      int numberLocation,
-      String streetLocation,
-      String cityLocation,
-      int numberCityLocation){
+      String name,
+      String passWord,
+      String adress,
+      int floor,
+      int code,
+      int zipCode,
+      String cityName,
+      int door,
+      bool hasElevator,
+      bool hasPet){
 
-    this.id=id;
+    this.email=email;
     this.name=name;
     this.passWord=passWord;
-    this.email=email;
-    this.firstName=firstName;
-    this.numberLocation=numberLocation;
-    this.streetLocation=streetLocation;
-    this.cityLocation=cityLocation;
-    this.numberCityLocation=numberCityLocation;
+    this.adress=adress;
+    this.floor=floor;
+    this.code=code;
+    this.zipCode=zipCode;
+    this.cityName=cityName;
+    this.door=door;
+    this.hasElevator=hasElevator;
+    this.hasPet=hasPet;
   }
 
 
@@ -40,30 +46,34 @@ class User {
 
   User.fromFirestore(DocumentSnapshot documentSnapshot) {
     Map<String, dynamic> m = documentSnapshot.data;
-    id = m['id'];
+    email = m['email'];
     name = m['name'];
     passWord = m['passWord'];
-    email = m['email'];
-    firstName = m['firstName'];
-    numberLocation = m['numberLocation'];
-    streetLocation = m['streetLocation'];
-    cityLocation = m['cityLocation'];
-    numberCityLocation = m['numberCityLocation'];
+    adress = m['adress'];
+    floor = m['floor'];
+    code = m['code'];
+    zipCode = m['zipCode'];
+    cityName = m['cityName'];
+    door = m['door'];
+    hasElevator = m['hasElevator'];
+    hasPet = m['hasPet'];
 
   }
 
 
   toMap() {
     return <String, dynamic>{
-      'id': id,
-      'passWord': passWord,
-      'name' : name,
       'email' : email,
-      'firstName' : firstName,
-      'numberLocation' : numberLocation,
-      'streetLocation' : streetLocation,
-      'cityLocation' : cityLocation,
-      'numberCityLocation' : numberCityLocation
+      'name' : name,
+      'passWord': passWord,
+      'adress': adress,
+      'floor': floor,
+      'code': code,
+      'zipCode': zipCode,
+      'cityName': cityName,
+      'door': door,
+      'hasElevator': hasElevator,
+      'hasPet': hasPet,
     };
   }
 }

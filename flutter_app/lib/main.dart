@@ -51,13 +51,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   UserService _service = UserService();
 
-  User _user = User('testuser','testpass','testname','testemail','testprenom',33,'teststreet','testville',39);
+  //User _user = User('testuser','testpass','testname','testemail','testprenom',33,'teststreet','testville',39);
 
 
   @override
   Widget build(BuildContext context) {
 
-    _service.addUser(_user.toMap());
+    //_service.addUser(_user.toMap());
 
     switch(_gestionSwitch.what){
       case switcherPage.home:

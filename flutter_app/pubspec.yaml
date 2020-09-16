@@ -28,8 +28,10 @@ dependencies:
   cloud_firestore: ^0.13.6
   firebase_storage: ^3.1.6
   dcdg: ^2.0.1
+  email_validator: '^1.0.0'
   flutter_google_places: ^0.2.4
   google_maps_webservice: ^0.0.16
+  carousel_slider: ^2.2.1
 
 
   # The following adds the Cupertino Icons font to your application.

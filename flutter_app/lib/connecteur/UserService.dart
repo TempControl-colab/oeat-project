@@ -12,7 +12,7 @@ class UserService {
 
 
   // Collections
-  final CollectionReference dbUsers = dbInstance.collection('test');
+  final CollectionReference dbUsers = dbInstance.collection('user');
 
   Future<List<User>> getAllUsers() async {
     QuerySnapshot querySnapshot = await dbUsers.getDocuments();
@@ -27,19 +27,13 @@ class UserService {
   Future<User> getUser(String name,String thisIs) async {
     QuerySnapshot querySnapshot =
     await dbUsers.where(thisIs, isEqualTo: name).getDocuments();
-    DocumentSnapshot documentSnapshot = querySnapshot.documents.first;
-    return User.fromFirestore(documentSnapshot);
-  }
-
-  Future<User> getTestUser(String mail,String pass) async {
-    QuerySnapshot querySnapshot =
-    await dbUsers.where('email', isEqualTo: mail).where('passWord', isEqualTo: pass).getDocuments();
     if (querySnapshot.documents.length > 0) {
-      print('NON NULL');
       DocumentSnapshot documentSnapshot = querySnapshot.documents.first;
+      print(documentSnapshot);
       return User.fromFirestore(documentSnapshot);
     }
-    print('NULL');
+
+    print('N''existe pas');
     return null;
   }
 
@@ -50,6 +44,20 @@ class UserService {
     QuerySnapshot querySnapshot =
     await dbUsers.where('name', isEqualTo: name).getDocuments();
     await dbUsers.document(querySnapshot.documents.first.documentID).delete();
+  }
+
+  Future<User> getTestUser(String mail, String pass) async {
+    QuerySnapshot querySnapshot =
+    await dbUsers.where('email', isEqualTo: mail).where('passWord', isEqualTo: pass).getDocuments();
+    if (querySnapshot.documents.length > 0) {
+      print('DEBUG : Connexion successful !');
+      DocumentSnapshot documentSnapshot = querySnapshot.documents.first;
+      print(documentSnapshot.data);
+      print(documentSnapshot.documentID);
+      return User.fromFirestore(documentSnapshot);
+    }
+    print('DEBUG : Wrong email or password');
+    return null;
   }
 
 }
