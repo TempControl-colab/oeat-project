@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/connecteur/ServiceUsers.dart';
+import 'package:flutterapp/connecteur/UserService.dart';
 import 'package:flutterapp/connecteur/Users.dart';
 import 'package:flutterapp/elementsArgument/BooleanAppBox.dart';
 import 'package:flutterapp/elementsArgument/ElementsAppBox.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutterapp/blockGestion/GestionSwitch.dart';
-import 'package:flutterapp/connecteur/ServiceUsers.dart';
+import 'package:flutterapp/connecteur/UserService.dart';
 import 'package:flutterapp/elementsArgument/ButtonAppBox.dart';
 import 'package:flutterapp/elementsArgument/ElementsAppBox.dart';
 import 'package:flutterapp/elementsArgument/StringAppBox.dart';

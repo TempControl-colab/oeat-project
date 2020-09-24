@@ -5,7 +5,7 @@ import 'package:flutterapp/frontPage/FrontHome.dart';
 import 'package:flutterapp/frontPage/FrontInscription.dart';
 import 'package:flutterapp/general/general_structure.dart';
 
-import 'connecteur/ServiceUsers.dart';
+import 'connecteur/UserService.dart';
 import 'connecteur/Users.dart';
 
 
